@@ -13,7 +13,9 @@
     <!-- Otros estilos o enlaces que necesites -->
 </head>
 <body>    
-
+    <header>
+        @include('includes._header')
+    </header>  
 <div class="container mt-5">
     <h1>Crear Empleado</h1>
     <form action="{{ url('/empleado') }}" method="POST" enctype="multipart/form-data">

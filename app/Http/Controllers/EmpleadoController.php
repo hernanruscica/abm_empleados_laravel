@@ -59,7 +59,8 @@ class EmpleadoController extends Controller
         
 
         Empleado::insert($datosEmpleado);
-        return response()->json($datosEmpleado);
+        $empleadoId = Empleado::where('Correo', $datosEmpleado['correo'])->first()->id;
+        return redirect('/empleado/'.$empleadoId);
     }
 
     /**
@@ -68,9 +69,11 @@ class EmpleadoController extends Controller
      * @param  \App\Models\Empleado  $empleado
      * @return \Illuminate\Http\Response
      */
-    public function show(Empleado $empleado)
-    {
-        //
+    public function show($id)
+    {        
+        $empleado = Empleado::findOrFail($id); // Obtener el empleado por su ID
+        return view('empleado.show', ['empleado' => $empleado]);  
+
     }
 
     /**
@@ -82,7 +85,7 @@ class EmpleadoController extends Controller
     public function edit(Empleado $empleado)
     {
         //muestro el formu de edicion
-        return view('empleado.edit');
+        return view('empleado.edit', ['empleado' => $empleado]);
     }
 
     /**

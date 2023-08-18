@@ -16,6 +16,7 @@
         @include('includes._header')
     </header>
     <!-- resources/views/empleados/show.blade.php -->
+    <img src=" {{ asset('storage').'/uploads/'.$empleado->Foto }}" alt="Foto de perfil">
     <h1>Detalles del Empleado</h1>
     <p>Nombre: {{ $empleado->Nombre }}</p>
     <p>Apellido: {{ $empleado->Apellido }}</p>

@@ -18,8 +18,9 @@
     </header>    
     <div class="container mt-5">
         <h1>Editar Empleado</h1>
-        <form action="{{ url('/empleado') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ url('/empleado/'.$empleado->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
+            {{ method_field('PATCH') }}
             <div class="mb-3">
                 <label for="nombre" class="form-label">Nombre</label>
                 <input type="text" class="form-control" id="nombre" name="nombre" value= "{{ $empleado->Nombre }}" required>

@@ -98,7 +98,21 @@ class EmpleadoController extends Controller
     public function update(Request $request, $id)
 {
     $datosEmpleado = request()->except('_token', '_method');
+
+
+    if ($request->hasFile('foto')) {
+        $foto = $request->file('foto'); // Obtener la instancia del archivo cargado
+        
+        $directorioDestino = 'uploads'; // Definir el nombre del directorio de destino
+        $discoAlmacenamiento = 'public'; // Definir el disco de almacenamiento
     
+        $rutaArchivoAlmacenado = $foto->store($directorioDestino, $discoAlmacenamiento);
+        
+        // Asignar la ruta del archivo almacenado a los datos del empleado
+        $datosEmpleado['foto'] = $rutaArchivoAlmacenado;
+    }
+
+
     $empleado = Empleado::where('id', '=', $id);
 
         if (!$empleado) {

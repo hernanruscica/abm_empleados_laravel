@@ -34,8 +34,9 @@
                 <input type="email" class="form-control" id="correo" name="correo" value= "{{ $empleado->Correo }}"  required>
             </div>
             <div class="mb-3">
-                <label for="foto" class="form-label">Foto</label>
-                <input type="file" class="form-control" id="foto" name="foto" value= "{{ $empleado->Foto }}"  required>
+                <label for="foto" class="form-label">Foto</label>                
+                <input type="file" class="form-control" id="foto" name="foto" value= "{{ $empleado->Foto }}"  >
+                <img src=" {{ asset('storage').'/'.$empleado->Foto }}" alt="Foto de perfil" style="width:200px; height:auto;" id="vista_previa"/>
             </div>
             <button type="submit" class="btn btn-primary">Guardar edicion</button>
         </form>
@@ -43,6 +44,27 @@
         <!-- Agrega los scripts de Bootstrap al final del body -->
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js" integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa" crossorigin="anonymous"></script>
+
+        <script>
+            const inputFoto = document.getElementById('foto');
+            const vistaPrevia = document.getElementById('vista_previa');
+
+            inputFoto.addEventListener('change', function(event) {
+                const archivo = event.target.files[0];
+                console.log(archivo.name);
+                
+                if (archivo) {
+                    const reader = new FileReader();
+                    
+                    reader.addEventListener('load', function() {
+                        vistaPrevia.src = reader.result;
+                    });
+
+                    reader.readAsDataURL(archivo);
+                }
+                
+            });
+        </script>
     </div>
     <!-- Otros scripts o contenido que necesites -->
 </body>

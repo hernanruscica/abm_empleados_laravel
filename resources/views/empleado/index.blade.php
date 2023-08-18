@@ -15,38 +15,50 @@
     <header>
         @include('includes._header')
     </header>
+    <div class="container-fluid">
     <!-- Contenido de tu aplicación -->
     <table class="table table-light">
     <thead>
         <tr>
+            <th>Foto</th>
             <th>Nombre</th>
             <th>Apellido</th>
-            <th>Correo</th>
-            <th>Foto</th>
+            <th>Correo</th>            
+            <th>Acciones</th> 
         </tr>
     </thead>
     <tbody>
         @foreach ($empleados as $empleado)
             <tr>
+                <td>
+                    <img src=" {{ asset('storage').'/'.$empleado->Foto }}" 
+                            alt="Foto de perfil"
+                            style="width:200px; height:auto;">
+                </td>
                 <td>{{ $empleado->Nombre }}</td>
                 <td>{{ $empleado->Apellido }}</td>
                 <td>{{ $empleado->Correo }}</td>
-                <td>{{ $empleado->Foto }}</td>
-                <td>
-                    <a href=" {{ url('/empleado/'.$empleado->id).'/edit' }} ">Editar</a>
-
-                    <form action="{{ url('/empleado/'.$empleado->id) }}" method="post">
-                        @csrf
-                        {{ method_field('DELETE') }}
-                        <input type="submit" onclick="return confirm('Confirma el borrado?')" value="Borrar">
-
-                    </form>
+                
+                <td class="row">
+                    <div class="col">
+                        <form action="{{ url('/empleado/'.$empleado->id) }}" method="post">
+                            @csrf
+                            {{ method_field('DELETE') }}
+                            <input type="submit" onclick="return confirm('Confirma el borrado?')" value="Borrar">
+                        </form>
+                    </div>
+                    <div class="col">
+                        <a href=" {{ url('/empleado/'.$empleado->id).'/edit' }} ">Editar</a>
+                    </div>
+                    <div class="col">
+                        <a href=" {{ url('/empleado/'.$empleado->id) }} ">Ver</a>
+                    </div>
                 </td>
-
             </tr>
         @endforeach
     </tbody>
 </table>
+</div>
     
     <!-- Agrega los scripts de Bootstrap al final del body -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>

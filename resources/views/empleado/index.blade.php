@@ -17,6 +17,12 @@
     </header>
     <div class="container-fluid">
     <!-- Contenido de tu aplicación -->
+    <h1>Listado de empleados</h1>
+
+    @if (Session::has('mensaje'))
+        {{ Session::get('mensaje') }}
+    @endif
+
     <table class="table table-light">
     <thead>
         <tr>

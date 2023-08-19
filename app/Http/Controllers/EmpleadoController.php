@@ -60,7 +60,7 @@ class EmpleadoController extends Controller
 
         Empleado::insert($datosEmpleado);
         $empleadoId = Empleado::where('Correo', $datosEmpleado['correo'])->first()->id;
-        return redirect('/empleado/'.$empleadoId);
+        return redirect('/empleado')->with('mensaje', 'Empleado agregado con exito!');
     }
 
     /**
@@ -121,7 +121,7 @@ class EmpleadoController extends Controller
 
         $empleado->update($datosEmpleado);
 
-        return redirect('/empleado/'.$id)->with('success', 'Empleado actualizado exitosamente.');
+        return redirect('/empleado/'.$id)->with('mensaje', 'Empleado editado exitosamente.');
     }
 
     /**
@@ -134,6 +134,6 @@ class EmpleadoController extends Controller
     {
         //
         Empleado::destroy($id);
-        return redirect('empleado');
+        return redirect('empleado')->with('mensaje', 'Empleado borrado con exito!');
     }
 }

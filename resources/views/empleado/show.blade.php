@@ -16,13 +16,21 @@
         @include('includes._header')
     </header>
     <!-- resources/views/empleados/show.blade.php -->
-    <img src=" {{ asset('storage').'/'.$empleado->Foto }}" alt="Foto de perfil" style="width:200px; height:auto;">
-    <h1>Detalles del Empleado</h1>
-    <p>Nombre: {{ $empleado->Nombre }}</p>
-    <p>Apellido: {{ $empleado->Apellido }}</p>
-    <p>Correo: {{ $empleado->Correo }}</p>
-    <p>Foto: {{ $empleado->Foto }}</p>
-    <!-- Agrega más detalles según sea necesario -->
+    <h1 class="display-5 ">Detalles del Empleado</h1>
+
+    @if (Session::has('mensaje'))
+        {{ Session::get('mensaje') }}
+    @endif
+
+    <div class="container mt-5">
+        <img src=" {{ asset('storage').'/'.$empleado->Foto }}" alt="Foto de perfil" style="width:200px; height:auto;">
+        
+        <p>Nombre: {{ $empleado->Nombre }}</p>
+        <p>Apellido: {{ $empleado->Apellido }}</p>
+        <p>Correo: {{ $empleado->Correo }}</p>
+        <p>Foto: {{ $empleado->Foto }}</p>
+        <!-- Agrega más detalles según sea necesario -->
+    </div>
 
     
     <!-- Agrega los scripts de Bootstrap al final del body -->

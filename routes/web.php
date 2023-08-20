@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmpleadoController;
+use App\Http\Controllers\GraficosController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,4 +32,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::group(['middleware'=> 'auth'], function () {
     //Route::get('/', [EmpleadoController::class, 'index'])->name('home');
     Route::resource('empleado', EmpleadoController::class);
+    Route::get('/graficos', [GraficosController::class, 'index']);
 });

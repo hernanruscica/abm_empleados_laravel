@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h1 class="display-5 ">Tension [V] Fase R</h1>
+    <h1 class="display-5 ">Canal 01 - Tension [V] Fase R</h1>
     <canvas id="miGrafico"></canvas>
 </div>
 <script>

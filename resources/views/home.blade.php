@@ -16,9 +16,11 @@
 
                     {{ __('You are logged in!') }}
                     <a href="{{ route('empleado.index') }}">Listado de Empleados</a>
+                    <a href="{{ url('canales') }}">Listado de Canales</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
 @endsection
+

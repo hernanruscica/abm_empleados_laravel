@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class GraficosController extends Controller
+class CanalesController extends Controller
 {
     //
     public function index()
 {
-    return view('graficos.temperaturas');
+    return view('canales.canal01');
 }
 
 }

@@ -55,7 +55,7 @@
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
-                        @else
+                        @else                            
                             <li class="nav-item ">
                                 <a href="{{ route('empleado.index') }}"  class="nav-link">Lista de Empleados</a>
                             </li>
